@@ -22,6 +22,10 @@ public class LoginPageTest {
 	@Test
 	public static HomePage LoginTest() {
 		loginpage.login("varunpatil03","github@123");
+		/*
+		 * Why cant we use the loginpage object that is 
+		 * declared globally.
+		 */
 		return new HomePage();
 	}
 
