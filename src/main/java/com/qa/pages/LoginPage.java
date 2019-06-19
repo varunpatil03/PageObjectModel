@@ -1,14 +1,18 @@
 package com.qa.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.qa.base.TestBase;
+import com.qa.base.TestBase2;
 
 
-public class LoginPage {
-	
+
+public class LoginPage extends TestBase2{
+	Logger log = Logger.getLogger(LoginPage.class);
 	WebDriver driver;
 	
 	//Page Factory - OR:
@@ -24,6 +28,7 @@ public class LoginPage {
 	
 	//Initializing the Page Objects:
 	public LoginPage(WebDriver driver){
+		super(driver);
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}

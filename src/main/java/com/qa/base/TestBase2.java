@@ -15,53 +15,47 @@ import org.apache.log4j.Logger;
  *
  */
 
-public class TestBase {
+public class TestBase2 {
 	
-	Logger log = Logger.getLogger(TestBase.class);
+	Logger log = Logger.getLogger(TestBase2.class);
 	
-	private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
+	private WebDriver driver;
+	
+	public TestBase2(WebDriver driver) {
+		this.driver=driver;
+	}
 	
 	
-	@BeforeMethod
-	public void webDriver() throws InterruptedException, IOException {
+	
+	public WebDriver initDriver() throws InterruptedException, IOException {
 		
 		// browser name value passed from Jenkins
 		String browserName = System.getProperty("browser");
 		System.out.println("---------------------"+browserName);
-		DesiredCapabilities capability = new DesiredCapabilities();
+		
 		
 		if (browserName == null)
 			browserName = "chrome";
 		
 		else if(browserName.equalsIgnoreCase("Firefox")){
 			System.setProperty("webdriver.chrome.driver", "browserdrivers\\geckodriver.exe");
-			capability.setBrowserName("Firefox");
-			capability.setPlatform(Platform.WIN10);
-			webDriver.set(new FirefoxDriver());
+			driver=new FirefoxDriver();
+			driver.manage().window().maximize();
 		}
 		
 		else if(browserName.equalsIgnoreCase("chrome")){
 				System.setProperty("webdriver.chrome.driver", "browserdrivers\\chromedriver.exe");
-				capability.setBrowserName("Chrome");
-				capability.setPlatform(Platform.WIN10);
-				webDriver.set(new ChromeDriver());
+				driver=new ChromeDriver();
+				driver.manage().window().maximize();
 			}
 		
-		getWebDriver().manage().window().maximize();
-	}
-	
-	/**
-	 * @return the WebDriver for the current thread
-	 */
-	public WebDriver getWebDriver() {
-		System.out.println("WebDriver: " + webDriver.get());
-		return webDriver.get();
+		return driver;
 	}
 	
 	
 	@AfterMethod
 	public void tearDown() {
-		getWebDriver().quit();
+		driver.quit();
 	}
 	
 }
