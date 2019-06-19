@@ -5,7 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.apache.log4j.Logger;
 
@@ -19,49 +22,41 @@ public class TestBase {
 	
 	Logger log = Logger.getLogger(TestBase.class);
 	
-	private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
+	private WebDriver driver;
 	
-	
-	@BeforeMethod
-	public void webDriver() throws InterruptedException, IOException {
+	public TestBase(){
 		
-		// browser name value passed from Jenkins
-		String browserName = System.getProperty("browser");
-		System.out.println("---------------------"+browserName);
-		DesiredCapabilities capability = new DesiredCapabilities();
-		
-		if (browserName == null)
-			browserName = "chrome";
-		
-		else if(browserName.equalsIgnoreCase("Firefox")){
-			System.setProperty("webdriver.chrome.driver", "browserdrivers\\geckodriver.exe");
-			capability.setBrowserName("Firefox");
-			capability.setPlatform(Platform.WIN10);
-			webDriver.set(new FirefoxDriver());
-		}
-		
-		else if(browserName.equalsIgnoreCase("chrome")){
-				System.setProperty("webdriver.chrome.driver", "browserdrivers\\chromedriver.exe");
-				capability.setBrowserName("Chrome");
-				capability.setPlatform(Platform.WIN10);
-				webDriver.set(new ChromeDriver());
-			}
-		
-		getWebDriver().manage().window().maximize();
 	}
 	
-	/**
-	 * @return the WebDriver for the current thread
-	 */
-	public WebDriver getWebDriver() {
-		System.out.println("WebDriver: " + webDriver.get());
-		return webDriver.get();
+	public WebDriver initDriver() throws InterruptedException, IOException {
+		
+		// browser name value passed from Jenkins
+		String browserName = "chrome";
+		System.out.println("---------------------"+browserName);
+		
+		
+		
+		
+		if(browserName.equalsIgnoreCase("Firefox")){
+			System.out.println("before");
+			System.setProperty("webdriver.chrome.driver", "browserdrivers\\geckodriver.exe");
+			driver=new FirefoxDriver();
+			driver.manage().window().maximize();
+		}
+		
+		else if(browserName.equalsIgnoreCase("chrome") || browserName.isEmpty()){
+				System.setProperty("webdriver.chrome.driver", "browserdrivers\\chromedriver.exe");
+				driver=new ChromeDriver();
+				driver.manage().window().maximize();
+			}
+		
+		return driver;
 	}
 	
 	
 	@AfterMethod
 	public void tearDown() {
-		getWebDriver().quit();
+		driver.quit();
 	}
 	
 }
