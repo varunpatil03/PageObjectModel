@@ -1,5 +1,7 @@
 package com.qa.tests;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
@@ -15,11 +17,11 @@ public class LoginPageTest extends TestBase2 {
 	WebDriver driver;
 	LoginPage loginpage;
 	
-	public LoginPageTest(WebDriver driver) {
+	public LoginPageTest(WebDriver driver){
 		super(driver);
 		System.out.println("------------");
-		this.driver=driver;
 		loginpage=new LoginPage(driver);
+		this.driver=driver;
 	}
 	
 	

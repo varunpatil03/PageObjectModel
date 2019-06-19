@@ -21,12 +21,12 @@ public class TestBase2 {
 	
 	private WebDriver driver;
 	
-	public TestBase2(WebDriver driver) {
+	public TestBase2(WebDriver driver){
 		this.driver=driver;
 	}
 	
 	
-	
+	@BeforeMethod
 	public WebDriver initDriver() throws InterruptedException, IOException {
 		
 		// browser name value passed from Jenkins
