@@ -5,11 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+
+import com.qa.extentreports.ExtentReporterNG;
+import com.qa.utils.TestUtils;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -21,7 +27,6 @@ import org.apache.log4j.Logger;
 public class TestBase {
 	
 	Logger log = Logger.getLogger(TestBase.class);
-	
 	private WebDriver driver;
 	
 	public TestBase(){
@@ -55,7 +60,12 @@ public class TestBase {
 	
 	
 	@AfterMethod
-	public void tearDown() {
+	public void tearDown(ITestResult result) throws IOException {
+		if (result.getStatus()==ITestResult.FAILURE) {
+			Reporter.log("Test Case Failed || Test Case ID: "+result.getMethod());
+			Reporter.log("Test Case Failed || Test Case ID: "+result.getThrowable());
+			ExtentReporterNG.screenPath=TestUtils.getScreenshot(driver, result.getTestName());
+		}
 		driver.quit();
 	}
 	
