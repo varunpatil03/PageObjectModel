@@ -13,6 +13,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import com.qa.actions.UserActions;
 import com.qa.extentreports.ExtentReporterNG;
 import com.qa.utils.TestUtils;
 
@@ -28,9 +29,9 @@ public class TestBase {
 	
 	Logger log = Logger.getLogger(TestBase.class);
 	private WebDriver driver;
-	
 	public TestBase(){
-		
+		//Load Property file and set the name of the browser. Either from jenkins
+		//or manually.
 	}
 	
 	public WebDriver initDriver() throws InterruptedException, IOException {

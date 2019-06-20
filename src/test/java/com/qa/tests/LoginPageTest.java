@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import com.qa.base.TestBaseWithThreadLocal;
 import com.qa.extentreports.ExtentReporterNG;
+import com.qa.actions.UserActions;
 import com.qa.base.TestBase;
 import com.qa.pages.HomePage;
 import com.qa.pages.LandingPage;
@@ -27,21 +28,22 @@ public class LoginPageTest extends TestBase{
 	HomePage homepage;
 	LandingPage landingpage;
 	
+	
 	public LoginPageTest(){
-		
+		super();
 	}
 	
 	@BeforeMethod
 	public void init() throws InterruptedException, IOException {
 		driver=initDriver();
 		loginpage=new LoginPage(driver);
+		
 	}
 	
 	@Test
 	public void LoginTest() throws InterruptedException {
-		homepage=loginpage.login("varunpatil03", "github@123");
+		homepage=loginpage.login("varunpatil03", "github@123", "varunpatil03");
 		Thread.sleep(5000);
-		Assert.assertFalse(true);
 	}
 
 	

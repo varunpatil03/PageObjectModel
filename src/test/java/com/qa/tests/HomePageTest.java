@@ -26,7 +26,7 @@ public class HomePageTest extends TestBase {
 		driver=initDriver();
 		loginpage=new LoginPage(driver);
 		homepage=new HomePage(driver);
-		homepage=loginpage.login("varunpatil03", "github@123");
+		homepage=loginpage.login("varunpatil03", "github@123", "varunpatil03");
 	}
 	
 	@Test
