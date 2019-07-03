@@ -2,31 +2,31 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="23415" started-at="2019-06-20T15:44:41Z" finished-at="2019-06-20T15:45:04Z">
+  <suite name="Default suite" duration-ms="21853" started-at="2019-06-27T19:03:22Z" finished-at="2019-06-27T19:03:44Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="23415" started-at="2019-06-20T15:44:41Z" finished-at="2019-06-20T15:45:04Z">
-      <class name="com.qa.tests.LoginPageTest">
-        <test-method status="PASS" signature="init()[pri:0, instance:com.qa.tests.LoginPageTest@59ec2012]" name="init" is-config="true" duration-ms="10681" started-at="2019-06-20T15:44:41Z" finished-at="2019-06-20T15:44:52Z">
+    <test name="Default test" duration-ms="21853" started-at="2019-06-27T19:03:22Z" finished-at="2019-06-27T19:03:44Z">
+      <class name="com.qa.tests.HomePageTest">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.qa.tests.HomePageTest@42dafa95]" name="init" is-config="true" duration-ms="15308" started-at="2019-06-27T19:03:22Z" finished-at="2019-06-27T19:03:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method status="PASS" signature="LoginTest()[pri:0, instance:com.qa.tests.LoginPageTest@59ec2012]" name="LoginTest" duration-ms="11338" started-at="2019-06-20T15:44:52Z" finished-at="2019-06-20T15:45:03Z">
+        <test-method status="PASS" signature="clickMyRecord()[pri:0, instance:com.qa.tests.HomePageTest@42dafa95]" name="clickMyRecord" duration-ms="5218" started-at="2019-06-27T19:03:37Z" finished-at="2019-06-27T19:03:43Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- LoginTest -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.qa.tests.LoginPageTest@59ec2012]" name="tearDown" is-config="true" duration-ms="1328" started-at="2019-06-20T15:45:03Z" finished-at="2019-06-20T15:45:04Z">
+        </test-method> <!-- clickMyRecord -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.qa.tests.HomePageTest@42dafa95]" name="tearDown" is-config="true" duration-ms="1281" started-at="2019-06-27T19:03:43Z" finished-at="2019-06-27T19:03:44Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=LoginPageTest.LoginTest()[pri:0, instance:com.qa.tests.LoginPageTest@59ec2012] output={null}]]]>
+                <![CDATA[[TestResult name=clickMyRecord status=SUCCESS method=HomePageTest.clickMyRecord()[pri:0, instance:com.qa.tests.HomePageTest@42dafa95] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.tests.LoginPageTest -->
+      </class> <!-- com.qa.tests.HomePageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -13,8 +13,8 @@ public class HomePage {
 	LandingPage landingpage;
 	
 	//Page Factory - OR:
-		@FindBy(xpath="//aside//span[@title='TestAutomationFW-POM']")
-		WebElement myname;
+		@FindBy(linkText="Read the guide")
+		WebElement link;
 	
 	
 	public HomePage(WebDriver driver){
@@ -23,8 +23,8 @@ public class HomePage {
 	}
 	
 	
-	public LandingPage clickRecord() throws InterruptedException, IOException{
-		myname.click();
+	public LandingPage clickLink() throws InterruptedException, IOException{
+		link.click();
 		return new LandingPage(driver);
 	}
 

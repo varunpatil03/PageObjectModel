@@ -25,13 +25,13 @@ public class HomePageTest extends TestBase {
 	public void init() throws InterruptedException, IOException {
 		driver=initDriver();
 		loginpage=new LoginPage(driver);
-		homepage=new HomePage(driver);
+		//homepage=new HomePage(driver); // No need to initialize all the pages with driver since page classes are already doing it
 		homepage=loginpage.login("varunpatil03", "github@123", "varunpatil03");
 	}
 	
 	@Test
 	public void clickMyRecord() throws InterruptedException, IOException {
-		landingpage=homepage.clickRecord();
+		landingpage=homepage.clickLink();
 		Thread.sleep(5000);
 	}
 

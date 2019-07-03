@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.qa.base.TestBaseWithThreadLocal;
 import com.qa.actions.UserActions;
@@ -37,6 +38,8 @@ public class LoginPage extends TestBase{
 	@FindBy(xpath="//strong[@class='css-truncate-target']")
 	WebElement user;
 	
+	@FindBy(xpath="//div[@class='Header-item Header-item--full flex-column flex-lg-row width-full flex-order-2 flex-lg-order-none mr-0 mr-lg-3 mt-3 mt-lg-0 Details-content--hidden']")
+	WebElement banner;
 	
 	//Initializing the Page Objects:
 	public LoginPage(WebDriver driver) throws InterruptedException, IOException{
@@ -56,6 +59,8 @@ public class LoginPage extends TestBase{
 		useraction.click(loginBtn);
 		useraction.click(profileBtn);	
 		Assert.assertTrue(assertions.compareText(user, verifyUser));
+		
+		useraction.click(profileBtn);
 		return new HomePage(driver);
 	}
 	
